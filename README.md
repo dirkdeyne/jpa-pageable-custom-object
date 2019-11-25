@@ -18,12 +18,19 @@ That is possible by using an alias in our query
 fun findAllActiveUserEmailWithNameAlias(@Param("active") active : Boolean, pageable : Pageable) : Page<UserEmail>
 ```
 
-possible requests:
-use normal query
+Possible requests:
+
+Normal query
+
 [http://localhost:8080/normal/active?sort=user.name,asc](http://localhost:8080/normal/active?sort=user.name,asc)
+
 [http://localhost:8080/normal/inactive?sort=user.name,asc](http://localhost:8080/normal/inactive?sort=user.name,asc)
-use alias in query
+
+
+Use alias in query
+
 [http://localhost:8080/alias/active?sort=name,asc](http://localhost:8080/alias/active?sort=name,asc)
+
 [http://localhost:8080/alias/inactive?sort=name,asc](http://localhost:8080/alias/inactive?sort=name,asc)
 
 Note: when using alias using 'user.name' is also valid [http://localhost:8080/alias/active?sort=user.name,asc](http://localhost:8080/alias/active?sort=user.name,asc)
