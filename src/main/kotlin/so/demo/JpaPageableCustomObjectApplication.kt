@@ -32,10 +32,12 @@ data class UserEmail(val name:String, val email:String)
 interface UserRepo : PagingAndSortingRepository<User, String>
 
 interface EmailRepo : PagingAndSortingRepository<Email, String> {
-
+    
+    // normal: UserEmail( e.user.name, e.email)
     @Query("select new so.demo.UserEmail( e.user.name, e.email) from Email e where e.user.active = :active" )
     fun findAllActiveUserName(@Param("active") active : Boolean, pageable : Pageable) : Page<UserEmail>
-
+    
+    // use alias: UserEmail( e.user.name as name, e.email)
     @Query("select new so.demo.UserEmail( e.user.name as name, e.email) from Email e where e.user.active = :active" )
     fun findAllActiveUserEmailWithNameAlias(@Param("active") active : Boolean, pageable : Pageable) : Page<UserEmail>
 }
